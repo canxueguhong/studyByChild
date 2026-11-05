@@ -24,7 +24,10 @@ jobs:
           node-version: '22'
 
       - name: Android SDK (fork)
-        uses: mindrunner/android-sdk-setup-action@v1
+        # 方案 A：常用 android-sdk
+      background: 
+      - uses: android-actions/setup-android@v3
+
         with:
           accept-licenses: true
 
