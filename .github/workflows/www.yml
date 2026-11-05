@@ -1,0 +1,23 @@
+name: 导出 www 资源包
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 打包 www
+        run: |
+          cd www
+          zip -r ../www.zip *
+
+      - name: 上传资源包
+        uses: actions/upload-artifact@v4
+        with:
+          name: www-网页资源
+          path: www.zip
