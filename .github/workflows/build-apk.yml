@@ -25,12 +25,13 @@ jobs:
       - name: 配置 Android SDK
         uses: android-actions/setup-android@v3
         with:
-          accept-licenses: true
+          accept-android-sdk-licenses: true
+          packages: 'platform-tools,build-tools;34.0.0,android-34'
 
       - name: 安装 Cordova
         run: npm install -g cordova
 
-      - name: 添加 Android 平台 & 构建
+      - name: 添加 Android 平台 & 构建 Debug
         run: |
           cordova platform add android --save
           cordova build android
